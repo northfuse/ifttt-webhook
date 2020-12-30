@@ -11,12 +11,12 @@ use std::collections::HashMap;
 use std::error::Error;
 
 #[derive(Debug, Clone)]
-pub struct IftttWebhook {
-    pub event: &'static str,
-    pub key: &'static str,
+pub struct IftttWebhook<'a> {
+    pub event: &'a str,
+    pub key: &'a str,
 }
 
-impl IftttWebhook {
+impl <'a> IftttWebhook<'a> {
     pub fn url(&self) -> String {
         format!(
             "https://maker.ifttt.com/trigger/{event}/with/key/{key}",
